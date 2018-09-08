@@ -113,7 +113,7 @@ namespace Worker
                 try
                 {
                     Console.Error.WriteLine("Connecting to redis");
-                    string RedisConnectionString = ipAddress + ":6379,password=redis_password");
+                    string RedisConnectionString = ipAddress + ":6379,password=redis_password" ;
                     Console.WriteLine($"redis connection string = {RedisConnectionString}");
                     return ConnectionMultiplexer.Connect(RedisConnectionString);
                 }
