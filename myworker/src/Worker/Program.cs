@@ -46,7 +46,7 @@ namespace Worker
                         if (!pgsql.State.Equals(System.Data.ConnectionState.Open))
                         {
                             Console.WriteLine("Reconnecting DB");
-                            pgsql = OpenDbConnection("Host=db;Username=postgres_user;");
+                            pgsql = OpenDbConnection("Server=db;Port=5432;Database=postgres;User ID=postgres_user;Password=postgres_password");
                         }
                         else
                         { // Normal +1 vote requested
@@ -113,7 +113,9 @@ namespace Worker
                 try
                 {
                     Console.Error.WriteLine("Connecting to redis");
-                    return ConnectionMultiplexer.Connect(ipAddress);
+                    string RedisConnectionString = ipAddress + ":6379,password=redis_password");
+                    Console.WriteLine($"redis connection string = {RedisConnectionString}");
+                    return ConnectionMultiplexer.Connect(RedisConnectionString);
                 }
                 catch (RedisConnectionException)
                 {
