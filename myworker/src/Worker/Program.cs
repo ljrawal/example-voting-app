@@ -80,12 +80,12 @@ namespace Worker
                 }
                 catch (SocketException)
                 {
-                    Console.Error.WriteLine("Waiting for db");
+                    Console.Error.WriteLine("ERROR : Socket - Waiting for db");
                     Thread.Sleep(1000);
                 }
                 catch (DbException)
                 {
-                    Console.Error.WriteLine("Waiting for db");
+                    Console.Error.WriteLine("ERROR : db - Waiting for db");
                     Thread.Sleep(1000);
                 }
             }
